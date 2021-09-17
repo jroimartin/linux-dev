@@ -4,7 +4,7 @@ Helpers for several kernel development tasks.
 
 ## scripts/{make.sh,run.sh}
 
-These scripts make easier to build and run a kernel in qemu.
+These scripts make easier to build a kernel and run it in qemu.
 
 ### Usage
 
