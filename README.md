@@ -1,6 +1,10 @@
 # Linux Kernel Development
 
+Helpers for several kernel development tasks.
+
 ## scripts/{make.sh,run.sh}
+
+These scripts make easier to build and run a kernel in qemu.
 
 ### Usage
 
@@ -57,3 +61,9 @@ Build busybox:
 make -j 16
 make install
 ```
+
+## scripts/prune-kernel
+
+Because I use `CONFIG_LOCALVERSION_AUTO`, not the same version again and again,
+/boot and /lib/modules/ eventually fill up. This is a dumb script to purge that
+stuff.
