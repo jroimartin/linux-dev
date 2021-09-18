@@ -67,3 +67,41 @@ make install
 Because I use `CONFIG_LOCALVERSION_AUTO`, not the same version again and again,
 /boot and /lib/modules/ eventually fill up. This is a dumb script to purge that
 stuff.
+
+## docker/kerneldev-ubuntu
+
+This Dockerfile allows to create build environments using a given Ubuntu
+version. This is specially useful for building old kernels that require
+specific gcc versions.
+
+### Build
+
+Build the Docker image:
+
+```
+docker build \
+  [--build-arg UBUNTU_VERSION=<ubuntu_version>] \
+  [--build-arg USER_ID=<host_uid>] \
+  [--build-arg GROUP_ID=<host_gid>] \
+  [--build-arg USERNAME=<username>] \
+  -t kerneldev-ubuntu:<ubuntu_version> .
+```
+
+For instance:
+
+```
+docker build \
+  --build-arg UBUNTU_VERSION=18.04 \
+  -t kerneldev-ubuntu:18.04 .
+```
+
+### Run
+
+Run the Docker image:
+
+```
+docker run \
+  -ti --rm \
+  -v <kernel_path>:/kernel \
+  kerneldev-ubuntu:<ubuntu_version>
+```
