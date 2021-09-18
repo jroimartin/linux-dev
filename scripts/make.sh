@@ -16,7 +16,7 @@ if [[ -e $BUILD_DIR ]]; then
 	echo "warning: build dir '${BUILD_DIR}' already exists" >&2
 fi
 
-mkdir -p "${BUILD_DIR}/initramfs/"{bin,sbin,lib,usr,proc,sys}
+mkdir -p "${BUILD_DIR}/initramfs/"{bin,sbin,lib,usr,etc,proc,sys}
 
 # Build kernel.
 
