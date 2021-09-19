@@ -3,11 +3,11 @@
 
 # This script is based on
 # https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/scripts/prune-kernel
-# and has been adapted to work in Debian.
+# and has been adapted to work with Debian.
 
 # Because I use CONFIG_LOCALVERSION_AUTO, not the same version again and again,
 # /boot and /lib/modules/ eventually fill up. This is a dumb script to purge
-# that stuff:
+# that stuff.
 
 for f in "$@"
 do
