@@ -3,7 +3,9 @@
 
 set -eu
 
-BUILD_DIR=${BUILD_DIR:-"$PWD/build"}
+BUILD_DIR=${BUILD_DIR:-"${PWD}/build"}
+
+QEMUFLAGS=${QEMUFLAGS:-}
 
 qemu-system-x86_64 \
 	-nographic \
@@ -11,4 +13,5 @@ qemu-system-x86_64 \
 	-serial 'mon:stdio' \
 	-kernel "${BUILD_DIR}/bzImage" \
 	-initrd "${BUILD_DIR}/initramfs.cpio.gz" \
-	-append 'console=ttyS0'
+	-append 'console=ttyS0' \
+	${QEMUFLAGS}
