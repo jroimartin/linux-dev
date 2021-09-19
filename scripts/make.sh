@@ -10,7 +10,7 @@ fi
 KDIR=$1
 BUSYBOX_INSTALL=$2
 
-BUILD_DIR=${BUILD_DIR:-$PWD/build}
+BUILD_DIR=${BUILD_DIR:-"${PWD}/build"}
 
 if [[ -e $BUILD_DIR ]]; then
 	echo "warning: build dir '${BUILD_DIR}' already exists" >&2
