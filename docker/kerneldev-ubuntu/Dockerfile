@@ -1,4 +1,5 @@
 # SPDX-License-Identifier: GPL-2.0
+
 ARG UBUNTU_VERSION=18.04
 
 FROM ubuntu:${UBUNTU_VERSION}

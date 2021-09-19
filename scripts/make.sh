@@ -30,7 +30,6 @@ popd
 
 cat <<EOF > "${BUILD_DIR}/initramfs/init"
 #!/bin/sh
-# SPDX-License-Identifier: GPL-2.0
 
 mount -t proc none /proc
 mount -t sysfs none /sys
