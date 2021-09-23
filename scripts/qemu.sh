@@ -17,7 +17,8 @@ QEMUFLAGS=${QEMUFLAGS:-}
 qemu-system-x86_64 \
 	-enable-kvm \
 	-nographic \
-	-smp "cpus=${CPUS}" \
+	-smp "${CPUS}" \
+	-m 2G \
 	-kernel "${KERNEL}" \
 	-append 'root=/dev/sda rw console=ttyS0' \
 	-drive "file=${IMAGE},media=disk,format=raw" \
