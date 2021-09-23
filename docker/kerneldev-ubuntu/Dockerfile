@@ -1,5 +1,21 @@
 # SPDX-License-Identifier: GPL-2.0
 
+# Build:
+#
+# docker build \
+#   [--build-arg UBUNTU_VERSION=<ubuntu_version>] \
+#   [--build-arg USER_ID=<host_uid>] \
+#   [--build-arg GROUP_ID=<host_gid>] \
+#   [--build-arg USERNAME=<username>] \
+#   -t kerneldev-ubuntu:<ubuntu_version> .
+#
+# Run:
+#
+# docker run \
+#   -ti --rm \
+#   -v <kernel_path>:<kernel_path> \
+#   kerneldev-ubuntu:<ubuntu_version>
+
 ARG UBUNTU_VERSION=18.04
 
 FROM ubuntu:${UBUNTU_VERSION}
