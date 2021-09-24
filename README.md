@@ -8,7 +8,7 @@ Creates a minimal Debian disk image.
 
 ## scripts/qemu.sh
 
-Runs a vm using the specified kernel a disk image.
+Runs a VM using the specified kernel and disk image.
 
 ## scripts/prune-kernel.sh
 
