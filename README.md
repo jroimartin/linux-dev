@@ -10,7 +10,7 @@ Creates a minimal Debian disk image.
 
 Runs a vm using the specified kernel a disk image.
 
-## scripts/prune-kernel
+## scripts/prune-kernel.sh
 
 Because I use `CONFIG_LOCALVERSION_AUTO`, not the same version again and again,
 /boot and /lib/modules/ eventually fill up. This is a dumb script to purge that
