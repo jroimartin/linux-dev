@@ -3,7 +3,8 @@
 
 set -eu
 
-CPUS=2
+NCPU=2
+MEM=2G
 
 if [[ $# -ne 2 ]]; then
 	echo "usage: $0 <rootfs> <kernel>" >&2
@@ -17,8 +18,8 @@ QEMUFLAGS=${QEMUFLAGS:-}
 qemu-system-x86_64 \
 	-enable-kvm \
 	-nographic \
-	-smp "${CPUS}" \
-	-m 2G \
+	-smp "${NCPU}" \
+	-m "${MEM}" \
 	-kernel "${kernel}" \
 	-append 'root=/dev/sda rw console=ttyS0 nokaslr' \
 	-drive "file=${rootfs},media=disk,format=raw" \
