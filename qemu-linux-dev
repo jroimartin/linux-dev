@@ -1,0 +1,28 @@
+#!/bin/bash
+# SPDX-License-Identifier: GPL-2.0
+
+set -eu
+
+CPUS=2
+
+if [[ $# -ne 2 ]]; then
+	echo "usage: $0 <rootfs> <kernel>" >&2
+	exit 2
+fi
+rootfs=$1
+kernel=$2
+
+QEMUFLAGS=${QEMUFLAGS:-}
+
+qemu-system-x86_64 \
+	-enable-kvm \
+	-nographic \
+	-smp "${CPUS}" \
+	-m 2G \
+	-kernel "${kernel}" \
+	-append 'root=/dev/sda rw console=ttyS0 nokaslr' \
+	-drive "file=${rootfs},media=disk,format=raw" \
+	-device 'e1000,netdev=net0' \
+	-netdev 'user,id=net0,hostfwd=tcp:127.0.0.1:10022-:22' \
+	-s \
+	${QEMUFLAGS}

@@ -3,18 +3,18 @@
 # Build:
 #
 # docker build \
-#   [--build-arg UBUNTU_VERSION=<ubuntu_version>] \
+#   [--build-arg UBUNTU_VERSION=<version>] \
 #   [--build-arg USER_ID=<host_uid>] \
 #   [--build-arg GROUP_ID=<host_gid>] \
 #   [--build-arg USERNAME=<username>] \
-#   -t kerneldev-ubuntu:<ubuntu_version> .
+#   -t build-kernel:<version> .
 #
 # Run:
 #
 # docker run \
 #   -ti --rm \
 #   -v <kernel_path>:<kernel_path> \
-#   kerneldev-ubuntu:<ubuntu_version>
+#   build-kernel:<version>
 
 ARG UBUNTU_VERSION=18.04
 
@@ -22,7 +22,7 @@ FROM ubuntu:${UBUNTU_VERSION}
 
 ARG USER_ID=1000
 ARG GROUP_ID=1000
-ARG USERNAME=kerneldev
+ARG USERNAME=user
 
 RUN apt-get update
 RUN apt-get install -y build-essential git libncurses5-dev bc systemtap \
