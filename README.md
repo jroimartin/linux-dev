@@ -24,7 +24,7 @@ qemu-linux-dev <rootfs> <bzImage>
 
 ### SSH access
 
-Qemu forwards the TCP port `10022` at localhost to the VM SSH server.
+Qemu forwards `localhost:10022` to the VM SSH server.
 
 ```
 ssh -p 10022 root@localhost
