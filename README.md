@@ -64,7 +64,7 @@ make modules_install INSTALL_MOD_PATH=~/src/linux-dev/buildroot/overlay/
 Install `clangd` and [configure][emacs configuration] your editor to
 use it.
 Then, generate a `compile_commands.json` file at the root of the
-kernel source tree directory.
+kernel source tree.
 
 ```
 ./scripts/clang-tools/gen_compile_commands.py
