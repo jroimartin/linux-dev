@@ -47,7 +47,7 @@ following to `~/.config/gdb/gdbinit`:
 add-auto-load-safe-path ~/src/linux/
 ```
 
-It assumes that the Linux kernel source code has been cloned into
+It assumes that the kernel source tree has been cloned into
 `~/src/linux/`.
 
 ### Kernel modules
@@ -63,8 +63,8 @@ make modules_install INSTALL_MOD_PATH=~/src/linux-dev/buildroot/overlay/
 
 Install `clangd` and [configure][emacs configuration] your editor to
 use it.
-Then, generate a `compile_commands.json` file at the root of the Linux
-kernel source code directory.
+Then, generate a `compile_commands.json` file at the root of the
+kernel source tree directory.
 
 ```
 ./scripts/clang-tools/gen_compile_commands.py
