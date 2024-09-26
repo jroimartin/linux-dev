@@ -1,1 +1,2 @@
-/buildroot/overlay/lib/
+/overlay-extra/*
+!/overlay-extra/README.md

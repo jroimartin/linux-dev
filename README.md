@@ -8,13 +8,11 @@ This `qemu-linux-dev` script makes easier to test kernels in qemu.
 It expects a kernel and a file system image as inputs.
 
 The file system image can be built with [buildroot].
-The [/buildroot] directory contains a custom [buildroot configuration]
-as well as an overlay that configures sshd to allow root access with
-empty password.
-
-Take into account that the provided buildroot configuration expects
-this repo to be cloned at `~/src/linux-dev`, so the overlays are
-located at `~/src/linux-dev/buildroot/overlay`.
+This repository provides a custom [buildroot configuration] as well as
+an overlay that configures sshd to allow root access with empty
+password.
+The [/overlay-extra] directory can be used to include additional files
+in the generated rootfs image.
 
 ### Usage
 
@@ -53,11 +51,14 @@ It assumes that the kernel source tree has been cloned into
 ### Kernel modules
 
 Install the modules of the kernel being tested into the
-[/buildroot/overlay] directory.
+[/overlay-extra] directory.
 
 ```
-make modules_install INSTALL_MOD_PATH=~/src/linux-dev/buildroot/overlay/
+make modules_install INSTALL_MOD_PATH=~/src/linux-dev/overlay-extra/
 ```
+
+The previous command assumes that this repository has been cloned into
+`~/src/linux-dev/`.
 
 ## LSP
 
@@ -99,7 +100,6 @@ docker run \
 
 
 [buildroot]: https://buildroot.org/
-[buildroot configuration]: /buildroot/config.x86_64
-[/buildroot]: /buildroot
-[/buildroot/overlay]: /buildroot/overlay
+[buildroot configuration]: /config-buildroot.x86_64
+[/overlay-extra]: /overlay-extra
 [emacs configuration]: https://github.com/jroimartin/dotfiles/blob/76260967707f0a7cad2c2d69c86cc1dc9d6b1502/.emacs.d/init.el#L267
