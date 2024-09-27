@@ -5,7 +5,21 @@ Helpers for several kernel development tasks.
 ## qemu-linux-dev
 
 This `qemu-linux-dev` script makes easier to test kernels in qemu.
-It expects a kernel and a file system image as inputs.
+It expects a kernel and a rootfs image as inputs.
+
+The rootfs image can be built with [buildroot].
+This repository provides a default buildroot configuration as well as
+an overlay that configures sshd to allow root access with empty
+password.
+The [/br2-external/user/overlay/] directory can be used to include
+additional files in the generated rootfs image.
+
+**Note:** The instructions in this document assume the following
+locations:
+
+- `~/src/linux-dev`: This repository.
+- `~/src/buildroot`: Buildroot source tree.
+- `~/src/linux`: Linux kernel source tree.
 
 ### Usage
 
@@ -15,23 +29,22 @@ qemu-linux-dev <rootfs> <bzImage>
 
 ### Rootfs image
 
-Initialize the `buildroot` submodule.
+Clone the buildroot repository:
 
 ```
-git submodule init
-git submodule update
+git clone https://gitlab.com/buildroot.org/buildroot.git ~/src/buildroot
 ```
 
 Configure buildroot to use `linux-dev_defconfig`.
 
 ```
-make -C buildroot linux-dev_defconfig BR2_EXTERNAL=../br2-external
+make -C ~/src/buildroot linux-dev_defconfig BR2_EXTERNAL=~/src/linux-dev/br2-external
 ```
 
 Create the rootfs image.
 
 ```
-make -C buildroot -j8 BR2_EXTERNAL=../br2-external
+make -C ~/src/buildroot -j8 BR2_EXTERNAL=~/src/linux-dev/br2-external
 ```
 
 ### SSH access
@@ -59,9 +72,6 @@ following to `~/.config/gdb/gdbinit`:
 add-auto-load-safe-path ~/src/linux/
 ```
 
-It assumes that the kernel source tree has been cloned into
-`~/src/linux/`.
-
 ### Kernel modules
 
 Install the modules of the kernel being tested into the
@@ -70,9 +80,6 @@ Install the modules of the kernel being tested into the
 ```
 make modules_install INSTALL_MOD_PATH=~/src/linux-dev/br2-external/user/overlay/
 ```
-
-The previous command assumes that this repository has been cloned into
-`~/src/linux-dev/`.
 
 ## LSP
 
