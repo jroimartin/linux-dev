@@ -65,7 +65,7 @@ It assumes that the kernel source tree has been cloned into
 ### Kernel modules
 
 Install the modules of the kernel being tested into the
-[/overlay-extra] directory.
+[/br2-external/user/overlay/] directory.
 
 ```
 make modules_install INSTALL_MOD_PATH=~/src/linux-dev/br2-external/user/overlay/
@@ -114,6 +114,5 @@ docker run \
 
 
 [buildroot]: https://buildroot.org/
-[buildroot configuration]: /config-buildroot.x86_64
-[/overlay-extra]: /overlay-extra
+[/br2-external/user/overlay/]: /br2-external/user/overlay/
 [emacs configuration]: https://github.com/jroimartin/dotfiles/blob/76260967707f0a7cad2c2d69c86cc1dc9d6b1502/.emacs.d/init.el#L267
