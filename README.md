@@ -55,6 +55,17 @@ Qemu forwards `localhost:10022` to the VM SSH server.
 ssh -p 10022 root@localhost
 ```
 
+The following ssh configuration is useful to avoid fingerprint errors
+after a rootfs update.
+Add it to `~/.ssh/config`.
+
+```
+Host localhost
+	StrictHostKeyChecking no
+	GlobalKnownHostsFile /dev/null
+	UserKnownHostsFile /dev/null
+```
+
 ### KGDB
 
 A GDB server listens at `localhost:1234`.
