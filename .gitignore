@@ -1,2 +1,4 @@
-/overlay-extra/*
-!/overlay-extra/.empty
+br2-external/user/overlay/*
+!br2-external/user/overlay/.empty
+
+

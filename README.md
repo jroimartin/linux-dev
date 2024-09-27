@@ -7,17 +7,31 @@ Helpers for several kernel development tasks.
 This `qemu-linux-dev` script makes easier to test kernels in qemu.
 It expects a kernel and a file system image as inputs.
 
-The file system image can be built with [buildroot].
-This repository provides a custom [buildroot configuration] as well as
-an overlay that configures sshd to allow root access with empty
-password.
-The [/overlay-extra] directory can be used to include additional files
-in the generated rootfs image.
-
 ### Usage
 
 ```
 qemu-linux-dev <rootfs> <bzImage>
+```
+
+### Rootfs image
+
+Initialize the `buildroot` submodule.
+
+```
+git submodule init
+git submodule update
+```
+
+Configure buildroot to use `linux-dev_defconfig`.
+
+```
+make -C buildroot linux-dev_defconfig BR2_EXTERNAL=../br2-external
+```
+
+Create the rootfs image.
+
+```
+make -C buildroot -j8 BR2_EXTERNAL=../br2-external
 ```
 
 ### SSH access
@@ -54,7 +68,7 @@ Install the modules of the kernel being tested into the
 [/overlay-extra] directory.
 
 ```
-make modules_install INSTALL_MOD_PATH=~/src/linux-dev/overlay-extra/
+make modules_install INSTALL_MOD_PATH=~/src/linux-dev/br2-external/user/overlay/
 ```
 
 The previous command assumes that this repository has been cloned into
