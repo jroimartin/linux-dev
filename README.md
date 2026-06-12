@@ -98,17 +98,6 @@ following to `~/.config/gdb/gdbinit`:
 add-auto-load-safe-path ~/src/linux/
 ```
 
-## LSP
-
-Install `clangd` and [configure][emacs configuration] your editor to
-use it.
-Then, generate a `compile_commands.json` file at the root of the
-kernel source tree.
-
-```
-./scripts/clang-tools/gen_compile_commands.py
-```
-
 ## build-kernel
 
 This Dockerfile creates build environments using a given Ubuntu
@@ -134,6 +123,17 @@ docker run \
   -ti --rm \
   -v <kernel_path>:<kernel_path> \
   build-kernel:<version>
+```
+
+## LSP
+
+Install `clangd` and [configure][emacs configuration] your editor to
+use it.
+Then, generate a `compile_commands.json` file at the root of the
+kernel source tree.
+
+```
+./scripts/clang-tools/gen_compile_commands.py
 ```
 
 
