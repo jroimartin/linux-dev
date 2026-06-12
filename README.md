@@ -27,6 +27,12 @@ locations:
 qemu-linux-dev <rootfs> <bzImage>
 ```
 
+For instance,
+
+```
+qemu-linux-dev ~/src/buildroot/output/images/rootfs.ext4 ~/src/linux/arch/x86_64/boot/bzImage
+```
+
 ### Rootfs image
 
 Clone the buildroot repository:
@@ -45,6 +51,15 @@ Create the rootfs image.
 
 ```
 make -C ~/src/buildroot -j8 BR2_EXTERNAL=~/src/linux-dev/br2-external
+```
+
+### Kernel modules
+
+Install the modules of the kernel being tested into the
+[/br2-external/user/overlay/] directory.
+
+```
+make modules_install INSTALL_MOD_PATH=~/src/linux-dev/br2-external/user/overlay/
 ```
 
 ### SSH access
@@ -81,15 +96,6 @@ following to `~/.config/gdb/gdbinit`:
 
 ```
 add-auto-load-safe-path ~/src/linux/
-```
-
-### Kernel modules
-
-Install the modules of the kernel being tested into the
-[/br2-external/user/overlay/] directory.
-
-```
-make modules_install INSTALL_MOD_PATH=~/src/linux-dev/br2-external/user/overlay/
 ```
 
 ## LSP
